@@ -1,0 +1,229 @@
+:root {
+  color-scheme: dark;
+
+  --background:      #000;
+  --foreground:        #fff;
+  --foreground-soft:   #a8a8a8;
+  --rule:       #fff;
+  --focus:      #fff;
+
+  --display: "Jacquard 24", "Old English Text MT", serif;
+  --body: "Courier Prime", "Courier New", monospace;
+
+  --measure: 36rem;   /* ~66 characters of body text */
+  --page: 48rem;
+  --gutter: clamp(1rem, 5vw, 2.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--background);
+}
+
+body {
+  margin: 0 auto;
+  max-width: var(--page);
+  padding: 0 var(--gutter) 4rem;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--body);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+p { max-width: var(--measure); }
+
+::selection { background: var(--foreground); color: var(--background); }
+
+/* --- links ---------------------------------------------------- */
+
+a {
+  color: inherit;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  background: var(--foreground);
+  color: var(--background);
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  font-weight: 700;
+}
+.skip:focus {
+  left: var(--gutter);
+  top: 0.5rem;
+  z-index: 10;
+}
+
+/* Small caps-style labels: uppercase, tracked out. */
+.record-meta,
+.song-meta {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* --- masthead ------------------------------------------------- */
+
+.masthead {
+  padding: clamp(2.5rem, 10vw, 5rem) 0 clamp(2rem, 7vw, 3.5rem);
+  text-align: center;
+  border-bottom: 10px double var(--rule);
+}
+
+.wordmark {
+  position: relative;
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(3rem, 14vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+/* The name printed twice: a hollow outline knocked slightly out of
+   register behind the solid one. */
+.wordmark-ghost {
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--foreground-soft);
+  transform: translate(0.04em, 0.04em);
+}
+.wordmark-ink { position: relative; }
+
+/* --- sections ------------------------------------------------- */
+
+.band {
+  border-top: 6px solid var(--rule);
+  padding-top: 1.4rem;
+  margin-top: clamp(2.5rem, 8vw, 4rem);
+}
+
+.band h2 {
+  margin: 0 0 1.2rem;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  line-height: 1.05;
+}
+
+.section-intro {
+  margin: -0.4rem 0 1.6rem;
+  color: var(--foreground-soft);
+}
+
+/* --- listen rows ---------------------------------------------- */
+
+.platforms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--rule);
+}
+.platforms li { border-bottom: 2px solid var(--rule); }
+
+.platforms a {
+  display: block;
+  padding: 0.95rem 0.7rem;
+  text-decoration: none;
+}
+.platforms a:hover,
+.platforms a:focus-visible {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.platform-name {
+  display: block;
+  font-family: var(--body);
+  font-size: 1.6rem;
+  line-height: 1.15;
+}
+
+/* --- records -------------------------------------------------- */
+
+.records {
+  display: grid;
+  gap: clamp(2rem, 6vw, 2.75rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+.cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 2px solid var(--rule);
+}
+
+.record-title {
+  margin: 0.9rem 0 0.2rem;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 1.9rem;
+  line-height: 1.1;
+}
+
+.record-meta {
+  margin: 0 0 0.6rem;
+  font-size: 0.8em;
+  color: var(--foreground-soft);
+}
+
+.record-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95em;
+  font-weight: 700;
+}
+
+/* --- songbook ------------------------------------------------- */
+
+.songs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--rule);
+  max-width: var(--measure);
+}
+
+.songs li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.1rem 1rem;
+  padding: 0.8rem 0.2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.songs a {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.song-meta {
+  font-size: 0.78em;
+  color: var(--foreground-soft);
+}
