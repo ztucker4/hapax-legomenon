@@ -19,6 +19,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   background: var(--background);
 }
 
@@ -38,7 +39,7 @@ p { max-width: var(--measure); }
 
 ::selection { background: var(--foreground); color: var(--background); }
 
-/* --- links ---------------------------------------------------- */
+/* --- links --- */
 
 a {
   color: inherit;
@@ -71,14 +72,14 @@ a:hover {
   z-index: 10;
 }
 
-/* Small caps-style labels: uppercase, tracked out. */
+/* Small caps-style labels */
 .record-meta,
 .song-meta {
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
-/* --- masthead ------------------------------------------------- */
+/* --- masthead --- */
 
 .masthead {
   padding: clamp(2.5rem, 10vw, 5rem) 0 clamp(2rem, 7vw, 3.5rem);
@@ -128,7 +129,7 @@ a:hover {
   color: var(--foreground-soft);
 }
 
-/* --- listen rows ---------------------------------------------- */
+/* --- listen rows --- */
 
 .platforms {
   list-style: none;
@@ -156,7 +157,7 @@ a:hover {
   line-height: 1.15;
 }
 
-/* --- records -------------------------------------------------- */
+/* --- records --- */
 
 .records {
   display: grid;
@@ -198,7 +199,7 @@ a:hover {
   font-weight: 700;
 }
 
-/* --- songbook ------------------------------------------------- */
+/* --- songbook --- */
 
 .songs {
   list-style: none;
